@@ -1,0 +1,93 @@
+<h3>Add Theater</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  
+  <form #theaterform="ngForm"  (ngSubmit)="onSubmit()">
+      
+    
+      <div class="form-group">
+          <label for="name">Enter Theater Name</label>
+          <input type="text" #theaterName="ngModel" class="form-control" id="theaterName" minlength="4" pattern="[a-zA-Z ]+" required [(ngModel)]="theater.theaterName" name="theaterName">
+          <div *ngIf="theaterName.invalid && (theaterName.dirty || theaterName.touched)" class="alert alert-danger">
+
+            <div *ngIf="theaterName.errors.required">
+              Theater Name is Required
+          </div>
+          <div *ngIf="theaterName.errors.minlength">
+            Theater Name Should be atleast 4 characters
+        </div>
+        <div *ngIf="theaterName.errors.pattern">
+          Theater Name Should contain only characters
+      </div>
+         </div>
+       </div>
+
+
+
+      <div class="form-group">
+         <label for="name">Enter Theater City</label>
+        <input type="text" #theaterCity="ngModel" class="form-control" id="theaterCity" minlength="4" pattern="[a-zA-Z ]+" required [(ngModel)]="theater.theaterCity" name="theaterCity">
+         <div *ngIf="theaterCity.invalid && (theaterCity.dirty || theaterCity.touched)" class="alert alert-danger">
+
+               <div *ngIf="theaterCity.errors.required">
+                Theater City is Required
+              </div>
+              <div *ngIf="theaterCity.errors.minlength">
+                Theater City Should be atleast 4 characters
+            </div>
+            <div *ngIf="theaterCity.errors.pattern">
+              Theater City Should contain only characters
+          </div>
+              </div>
+
+
+      </div>
+
+      
+      
+      
+      <div class="form-group">
+         <label for="name">Enter Manager Name</label>
+            <input type="text" #managerName="ngModel" class="form-control" minlength="4" pattern="[a-zA-Z ]+" id="managerName" required [(ngModel)]="theater.managerName" name="managerName">
+          <div *ngIf="managerName.invalid && (managerName.dirty || managerName.touched)" class="alert alert-danger">
+
+           <div *ngIf="managerName.errors.required">
+         Manager Name is required.
+             </div>
+             <div *ngIf="managerName.errors.minlength">
+              Manager Name Should be atleast 4 characters
+          </div>
+          <div *ngIf="managerName.errors.pattern">
+            Manager Name Should contain only characters
+        </div>
+
+          </div>
+
+     </div>
+
+
+
+
+     <div class="form-group">
+         <label for="name">Enter Manager Contact</label>
+        <input #managerContact="ngModel" type="number" pattern="[0-9]{10}"  class="form-control" id="managerContact" required [(ngModel)]="theater.managerContact" name="emailId">
+         <div *ngIf="managerContact.invalid && (managerContact.dirty || managerContact.touched)" class="alert alert-danger">
+
+             <div *ngIf="managerContact.errors.required">
+             ManagerContact is Required
+             </div>
+
+              <div *ngIf="managerContact.errors.pattern">
+                Manager Contact must be 10 digits.
+              </div>
+          </div>
+      </div>
+
+         <button [disabled]="!theaterform.form.valid" type="submit" class="btn btn-success">Submit</button>
+    </form>
+<br>
+    <button (click)="gotoList()" class="btn btn-dark">Back To List</button>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You added successfully!</h4>
+</div> 

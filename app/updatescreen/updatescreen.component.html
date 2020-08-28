@@ -1,0 +1,67 @@
+
+    <div [hidden]="submitted" >
+        <br>
+        <br>
+        <br>
+        <h1>Update Screen Details</h1>
+        <br>
+        <form #screenform="ngForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="form-group">
+                      <label for="name">Enter Screen Name To Update </label>
+                      <input #screenName="ngModel" [(ngModel)]="screen.screenName" minlength="4" pattern="[a-zA-Z0-9 ]+" type="text"  class="form-control"  name="screenName"  id="screenName" required>
+                      <div *ngIf="screenName.invalid && (screenName.dirty || screenName.touched)"
+                      class="alert alert-danger">
+           
+                      <div *ngIf="screenName.errors.required">
+                       Screen Name is Required
+                      </div>
+                      <div *ngIf="screenName.errors.minlength">
+                        Screen Name Should be atleast 4 characters
+                         </div>
+                         <div *ngIf="screenName.errors.pattern">
+                          Screen Name Should contain only alphabets and numbers
+                           </div>
+                      </div>
+          </div>
+            
+          <div class="form-group">
+                      <label for="name">Enter Rows To Update</label>
+                      <input  #rows="ngModel"  type="number"  class="form-control" required [(ngModel)]="screen.rows" name="rows"  id="rows">
+                      <div *ngIf="rows.invalid && (rows.dirty || rows.touched)"
+                      class="alert alert-danger">
+                
+                     <div *ngIf="rows.errors.required">
+                     Rows is required.
+                      </div>
+                
+                      </div>
+          </div>
+                  
+          
+          <div class="form-group">
+                      <label for="name">Enter Columns To Update </label>
+                      <input   #columns="ngModel" type="number"  class="form-control" required [(ngModel)]="screen.columns" name="columns"  id="columns">
+                      <div *ngIf="columns.invalid && (columns.dirty || columns.touched)"
+                      class="alert alert-danger">
+                
+                <div *ngIf="columns.errors.required">
+                Columns is required.
+                </div>
+                
+                
+                </div>
+                  
+          </div>
+
+           
+                 <button   [disabled]="!screenform.form.valid"  type="submit" class="btn btn-primary"> Update Screen  </button>
+            
+        </form>
+        <br>
+        <button (click)="gotoList()" class="btn btn-dark">Back To List</button>
+       </div>
+    
+            <br>
+            <br>
+            <br>
+ 

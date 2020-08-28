@@ -1,0 +1,62 @@
+<h3>Add Screen</h3>
+<div>Theater Id is {{this.theater.theaterId}}</div>
+<div [hidden]="submitted" style="width: 400px;">
+  <form #screenform="ngForm"  (ngSubmit)="onSubmit()">
+    <div class="form-group">
+       <label for="name">Enter Screen Name</label>
+       <input type="text" #screenName="ngModel" class="form-control" id="screenName" minlength="4" pattern="[a-zA-z ]+[1-5]" required [(ngModel)]="screen.screenName" name="screenName">
+       <div *ngIf="screenName.invalid && (screenName.dirty || screenName.touched)" class="alert alert-danger">
+
+        <div *ngIf="screenName.errors.required">
+        Screen Name is Required
+         </div>
+         <div *ngIf="screenName.errors.minlength">
+          Screen Name Should be atleast 4 characters
+           </div>
+           <div *ngIf="screenName.errors.pattern">
+            Screen Name Should contain only alphabets and atleast one number must be included from 1-5
+             </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="form-group">
+      <label for="name">Enter No of Rows</label>
+      <input type="text" #rows="ngModel" class="form-control" pattern="[0-9]{2}" id="rows" required [(ngModel)]="screen.rows" name="rows">
+      <div *ngIf="rows.invalid && (rows.dirty || rows.touched)" class="alert alert-danger">
+
+       <div *ngIf="rows.errors.required">
+       Rows is required.
+       </div>
+       <div *ngIf="rows.errors.pattern">
+        Rows must be positive numbers only upto Two digits.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="name">Enter No of Columns</label>
+      <input type="text" #columns="ngModel" class="form-control" pattern="[0-9]{2}" id="columns" required [(ngModel)]="screen.columns" name="columns">
+      <div *ngIf="columns.invalid && (columns.dirty || columns.touched)"
+      class="alert alert-danger">
+
+      <div *ngIf="columns.errors.required">
+      Columns is required.
+      </div>
+      <div *ngIf="columns.errors.pattern">
+        Columns must be positive numbers only upto Two digits.
+        </div>
+      </div>
+
+    </div>
+
+ 
+
+    <button [disabled]="!screenform.form.valid" type="submit" class="btn btn-success">Submit</button>
+  </form>
+<br>
+  <button (click)="gotoList()" class="btn btn-dark">Back To List</button>
+</div>

@@ -1,0 +1,38 @@
+<!--Div means division is a section or part of the template -->
+<div >
+  <!--headings are represented by different tags based on the font size-->
+  <!--h1 tag has the largest font-->
+  <h1>Movie Screens</h1>
+    <table class="table table-hover">
+      <!--tbale hover class adds a hover effect (grey background color) on table rows-->
+      <tbody>
+        <tr>
+          <th>S.No</th>
+          <th>Screen Id</th>
+          <th>Screen Name</th>
+          <th>No of Rows</th>
+          <th>No of Columns</th>
+        </tr>
+  <!--{{}} this brackets are used for one way binding-->
+       <tr *ngFor="let scren of arr1 | async  ;let i=index;">
+         <td>{{i+1}}</td>
+         <td>{{scren.screenId}}</td>
+         <td>{{scren.screenName}}</td>
+         <td>{{scren.rows}}</td>
+         <td>{{scren.columns}}</td>
+         <td><button (click)="update(scren.screenId)" class="btn btn-light">Update</button></td>
+         <td><button (click)="delete(scren.screenId)"type="button" class="btn btn-outline-danger">Delete Screen</button></td>
+       </tr>
+   
+      </tbody>
+  
+    </table>
+ <!--&nbsp is used for getting space-->
+      <button [disabled]="theater.countScreen==5" (click)="addScreen(id)"class="btn btn-primary btn-lg">Add Screen</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button (click)="list()" class="btn btn-dark btn-lg">Back to theaters</button>
+
+      
+
+
+  </div>
+ 

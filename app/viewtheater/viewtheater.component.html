@@ -1,0 +1,37 @@
+<div >
+<h1> Movie Theaters </h1>
+<!--Here we have used table for data representation-->
+    <table class="table table-hover">
+      <tbody>
+        <tr><!--This is table reader with table headings-->
+          <th>S.No</th>
+          <th>Theater Id</th>
+          <th>Theater Name</th>
+          <th>Theater City</th>
+          <th>Manager Name</th>
+          <th>Manager Contact</th>
+          <th>No of Screens</th>
+        </tr>
+  <!--The async pipe in angular will subscribe to an Observable and return the latest value it has emitted.-->
+     <!--It is like a for loop it will iterate through the list-->
+     <tr *ngFor="let theater of arr1 | async ;let i=index">
+         <td>{{i+1}}</td>
+         <td>{{theater.theaterId}}</td>
+         <td>{{theater.theaterName}}</td>
+         <td>{{theater.theaterCity}}</td>
+         <td>{{theater.managerName}}</td>
+         <td>{{theater.managerContact}}</td>
+         <td>{{theater.countScreen}}</td>
+         <td><button (click)="screenDetails(theater.theaterId)" class="btn btn-info btn-sm">View Screens</button></td>
+         <td><button (click)="update(theater.theaterId)"class="btn btn-light btn-sm">Update Theater</button></td>
+         <td><button [disabled]="theater.countScreen!=0" (click)="delete(theater.theaterId)" type="button" class="btn btn-outline-danger btn-sm">Delete Theater</button></td>
+       </tr>
+      </tbody>
+    </table>
+    <button (click)="addTheater()" class="btn btn-primary btn-lg">Add Theater</button>&nbsp;&nbsp;&nbsp;
+    <button (click)="logout()" class="btn btn-danger btn-lg">Logout</button>
+
+
+  
+  </div> 
+ 

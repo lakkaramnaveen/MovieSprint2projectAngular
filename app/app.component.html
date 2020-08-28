@@ -1,0 +1,24 @@
+<!--it has navigations for specific components ...simply it is a navigation bar-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <h2 class="navbar-brand"> MOVIE </h2>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="/view">THEATERS LIST </a>
+      </li>
+      <!-- <li class="nav-item" >
+      <a class="nav-link" routerLink="/view1" routerLinkActive="active" >SCREENS LIST</a>
+      </li> -->
+        
+    </ul>
+  </nav>
+  <div class="jumbotron text-center">
+    <div>
+       <router-outlet></router-outlet>
+    </div>
+  </div>
+  <footer class="page-footer font-small blue">
+
+    <div class="footer-copyright text-center py-3">All rights reserved @Capgemini
+    </div>
+
+  </footer>

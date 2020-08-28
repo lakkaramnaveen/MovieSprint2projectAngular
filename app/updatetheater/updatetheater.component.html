@@ -1,0 +1,89 @@
+<div [hidden]="submitted" >
+  <br>
+  <br>
+  <br>
+  <h1>Update Theater Details</h1>
+  <br>
+  <form #theaterform="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+                <label for="name">Enter Theater Name To Update </label>
+                <input #theaterName="ngModel" [(ngModel)]="theater1.theaterName" minlength="4" pattern="[a-zA-Z ]+" type="text"  class="form-control"  name="theaterName"  id="theaterName" required>
+                <div *ngIf="theaterName.invalid && (theaterName.dirty || theaterName.touched)"
+                class="alert alert-danger">
+     
+                <div *ngIf="theaterName.errors.required">
+                 Theater Name is Required
+                </div>
+                <div *ngIf="theaterName.errors.minlength">
+                  Theater Name Should be atleast 4 characters
+                   </div>
+                   <div *ngIf="theaterName.errors.pattern">
+                    Theater Name Should contain only alphabets
+                     </div>
+                </div>
+    </div>
+      
+    <div class="form-group">
+      <label for="name">Enter City Name To Update </label>
+      <input #theaterCity="ngModel" [(ngModel)]="theater1.theaterCity" minlength="4" pattern="[a-zA-Z ]+" type="text"  class="form-control"  name="theaterCity"  id="theaterCity" required>
+      <div *ngIf="theaterCity.invalid && (theaterCity.dirty || theaterCity.touched)"
+      class="alert alert-danger">
+
+      <div *ngIf="theaterCity.errors.required">
+       Theater Name is Required
+      </div>
+      <div *ngIf="theaterCity.errors.minlength">
+        Theater Name Should be atleast 4 characters
+         </div>
+         <div *ngIf="theaterCity.errors.pattern">
+          Theater Name Should contain only alphabets
+           </div>
+      </div>
+</div>
+     
+
+<div class="form-group">
+  <label for="name">Enter Manager Name To Update </label>
+  <input  #managerName="ngModel" type="text"  class="form-control" minlength="4" pattern="[a-zA-Z ]+" required [(ngModel)]="theater1.managerName" name="managerName"  id="managerName">
+  <div *ngIf="managerName.invalid && (managerName.dirty || managerName.touched)" class="alert alert-danger">
+
+    <div *ngIf="managerName.errors.required">
+    Manager Name is required.
+    </div>
+    <div *ngIf="managerName.errors.minlength">
+      Manager Name Should be atleast 4 characters
+  </div>
+  <div *ngIf="managerName.errors.pattern">
+    Manager Name Should contain only characters
+</div>
+    
+    </div>
+</div>
+
+
+<div class="form-group">
+  <label for="name">Enter Manager Contact To Update </label>
+  <input #managerContact="ngModel"  type="number"  pattern="[0-9]{10}"  class="form-control" required [(ngModel)]="theater1.managerContact" name="managerContact"  id="managerContact">
+  <div *ngIf="managerContact.invalid && (managerContact.dirty || managerContact.touched)" class="alert alert-danger">
+
+     <div *ngIf="managerContact.errors.required">
+     ManagerContact is Required
+     </div>
+
+     <div *ngIf="managerContact.errors.pattern">
+        Manager Contact must be 10 digits.
+     </div>
+  </div>
+</div>
+
+           <button   [disabled]="!theaterform.form.valid"  type="submit" class="btn btn-primary"> Update Theater  </button>
+      
+  </form>
+  <br>
+  <button (click)="gotoList()" class="btn btn-dark">Back To List</button>
+ </div>
+
+      <br>
+      <br>
+      <br>
+
